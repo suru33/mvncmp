@@ -31,6 +31,8 @@ public:
     explicit MvnVersion(string version);
     void clean();
     void split();
+    void create();
+    void convert();
     vector<string> getTokens();
 
     friend ostream &operator<<(ostream &out, MvnVersion mvnVersion);

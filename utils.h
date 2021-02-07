@@ -31,4 +31,12 @@ string *getOrElse(vector<string> v, int i) {
     return i < v.size() ? new string(v.at(i)) : nullptr;
 }
 
+bool isNumeric(string s) {
+    return all_of(s.begin(), s.end(), ::isdigit);
+}
+
+bool isAlphaNumeric(string s) {
+    return std::all_of(s.begin(), s.end(), ::isalnum);
+}
+
 #endif //MVN_COMPARE_CPP_UTILS_H
