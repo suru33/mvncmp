@@ -7,17 +7,7 @@
 using namespace std;
 
 class MvnVersion {
-    string version;
-    vector<string> tokens;
-
-    int majorVersion = 0;
-    int minorVersion = 0;
-    int patchVersion = 0;
-    int qualifierPrefix = 0;
-    int qualifierType = 0;
-    int qualifierSuffix = 0;
-
-    vector<vector<string>> allQualifiers{
+    const vector<vector<string>> allQualifiers{
             {"alpha",     "a"},
             {"beta",      "b"},
             {"milestone", "m"},
@@ -27,11 +17,18 @@ class MvnVersion {
             {"sp"}
     };
 
-    static void
-    checkAndForward(vector<string> *tokens, int *index, int *target, bool (*predicate)(string), int defaultVal);
+    string version;
+    vector<string> tokens;
 
-public:
-    explicit MvnVersion(string version);
+    int majorVersion = 0;
+    int minorVersion = 0;
+    int patchVersion = 0;
+    int qualifierPrefix = 0;
+    int qualifierType = 0;
+    int qualifierSuffix = 0;
+    int finalVersion = 0;
+
+    static void checkAndForward(vector<string> *tokens, int *index, int *target, int defaultValue);
 
     void clean();
 
@@ -41,10 +38,16 @@ public:
 
     void convert();
 
-    vector<string> getTokens();
+public:
+    explicit MvnVersion(string version);
 
-    friend ostream &operator<<(ostream &out, MvnVersion mvnVersion);
+    bool operator==(MvnVersion const &other) const;
+
+    bool operator>(MvnVersion const &other) const;
+
+    bool operator<(MvnVersion const &other) const;
+
+    friend ostream &operator<<(ostream &out, const MvnVersion &mvnVersion);
 };
-
 
 #endif //MVN_COMPARE_CPP_MVNVERSION_H
