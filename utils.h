@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void error(string msg) {
+void error(const string& msg) {
     cerr << msg << endl;
     exit(EXIT_FAILURE);
 }
@@ -31,12 +31,16 @@ string *getOrElse(vector<string> v, int i) {
     return i < v.size() ? new string(v.at(i)) : nullptr;
 }
 
+bool isAlpha(string s) {
+    return all_of(s.begin(), s.end(), ::isalpha);
+}
+
 bool isNumeric(string s) {
     return all_of(s.begin(), s.end(), ::isdigit);
 }
 
 bool isAlphaNumeric(string s) {
-    return std::all_of(s.begin(), s.end(), ::isalnum);
+    return all_of(s.begin(), s.end(), ::isalnum);
 }
 
 #endif //MVN_COMPARE_CPP_UTILS_H
