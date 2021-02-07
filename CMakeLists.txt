@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.17)
-project(mvn_compare_cpp)
+project(mvncmp)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(mvncmp main.cpp MvnVersion.cpp MvnVersion.h utils.h)
+include_directories(src)
+
+add_subdirectory(src)
+add_subdirectory(tst)
+add_subdirectory(lib/googletest)

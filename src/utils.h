@@ -7,16 +7,16 @@
 
 using namespace std;
 
-void error(const string& msg) {
+static void error(const string &msg) {
     cerr << msg << endl;
     exit(EXIT_FAILURE);
 }
 
-bool isStrEmpty(const string &str) {
+static bool isStrEmpty(const string &str) {
     return str.empty();
 }
 
-vector<string> splitAlphaNum(string s) {
+static vector<string> splitAlphaNum(string s) {
     const regex rx("(\\d+|\\D+)");
     const sregex_iterator last;
     vector<string> tokens;
@@ -27,19 +27,19 @@ vector<string> splitAlphaNum(string s) {
     return tokens;
 }
 
-string *getOrElse(vector<string> v, int i) {
+static string *getOrElse(vector<string> v, int i) {
     return i < v.size() ? new string(v.at(i)) : nullptr;
 }
 
-bool isAlpha(string s) {
+static bool isAlpha(string s) {
     return all_of(s.begin(), s.end(), ::isalpha);
 }
 
-bool isNumeric(string s) {
+static bool isNumeric(string s) {
     return all_of(s.begin(), s.end(), ::isdigit);
 }
 
-bool isAlphaNumeric(string s) {
+static bool isAlphaNumeric(string s) {
     return all_of(s.begin(), s.end(), ::isalnum);
 }
 
