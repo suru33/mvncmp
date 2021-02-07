@@ -8,6 +8,8 @@ using namespace std;
 
 class MvnVersion {
     string version;
+    vector<string> tokens;
+
     int majorVersion = 0;
     int minorVersion = 0;
     int patchVersion = 0;
@@ -27,6 +29,9 @@ class MvnVersion {
 
 public:
     explicit MvnVersion(string version);
+    void cleanVersion();
+    void splitVersion();
+    vector<string> getTokens();
 
     friend ostream &operator<<(ostream &out, MvnVersion mvnVersion);
 };
