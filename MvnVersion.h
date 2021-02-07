@@ -29,8 +29,8 @@ class MvnVersion {
 
 public:
     explicit MvnVersion(string version);
-    void cleanVersion();
-    void splitVersion();
+    void clean();
+    void split();
     vector<string> getTokens();
 
     friend ostream &operator<<(ostream &out, MvnVersion mvnVersion);

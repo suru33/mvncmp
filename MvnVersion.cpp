@@ -5,8 +5,8 @@
 
 MvnVersion::MvnVersion(string version) {
     this->version = std::move(version);
-    cleanVersion();
-    splitVersion();
+    clean();
+    split();
 }
 
 std::ostream &operator<<(std::ostream &out, MvnVersion c) {
@@ -14,13 +14,13 @@ std::ostream &operator<<(std::ostream &out, MvnVersion c) {
     return out;
 }
 
-void MvnVersion::cleanVersion() {
+void MvnVersion::clean() {
     auto it = remove_if(this->version.begin(), this->version.end(), ::isspace);
     this->version.erase(it, this->version.end());
     transform(this->version.begin(), this->version.end(), this->version.begin(), ::tolower);
 }
 
-void MvnVersion::splitVersion() {
+void MvnVersion::split() {
     const regex r("\\.|\\-");
     const sregex_token_iterator first(this->version.begin(), this->version.end(), r, -1);
     const sregex_token_iterator last;
