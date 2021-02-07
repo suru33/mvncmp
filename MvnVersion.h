@@ -27,12 +27,20 @@ class MvnVersion {
             {"sp"}
     };
 
+    static void
+    checkAndForward(vector<string> *tokens, int *index, int *target, bool (*predicate)(string), int defaultVal);
+
 public:
     explicit MvnVersion(string version);
+
     void clean();
+
     void split();
+
     void create();
+
     void convert();
+
     vector<string> getTokens();
 
     friend ostream &operator<<(ostream &out, MvnVersion mvnVersion);
