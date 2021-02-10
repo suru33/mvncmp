@@ -6,7 +6,7 @@
 
 int main(int argc, char *argv[]) {
     if (argc != 3) {
-        error("Invalid arguments");
+        error("usage: mvncmp <v1> <v2>\n");
     }
     auto *v1 = new MvnVersion(std::string(argv[1]));
     auto *v2 = new MvnVersion(std::string(argv[2]));
